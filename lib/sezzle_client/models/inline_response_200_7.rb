@@ -79,7 +79,7 @@ module SezzleClient
       }
 
       # call parent's initialize
-      super(attributes)
+      # super(attributes)
 
       if attributes.key?(:'uuid')
         self.uuid = attributes[:'uuid']
@@ -170,7 +170,7 @@ module SezzleClient
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
-      super(attributes)
+      # super(attributes)
       self.class.openapi_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
@@ -225,7 +225,11 @@ module SezzleClient
           end
         end
       else # model
-        SezzleClient.const_get(type).build_from_hash(value)
+        if type.present?
+          SezzleClient.const_get(type).build_from_hash(value)
+        else
+          value
+        end
       end
     end
 
