@@ -13,6 +13,8 @@ require 'date'
 
 module SezzleClient
   class Order
+    attr_accessor :intent
+
     attr_accessor :reference_id
 
     attr_accessor :description
@@ -31,9 +33,12 @@ module SezzleClient
 
     attr_accessor :checkout_expiration
 
+    attr_accessor :order_amount
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'intent' => :'intent',
         :'reference_id' => :'reference_id',
         :'description' => :'description',
         :'requires_shipping_info' => :'requires_shipping_info',
@@ -42,13 +47,15 @@ module SezzleClient
         :'metadata' => :'metadata',
         :'shipping_amount' => :'shipping_amount',
         :'tax_amount' => :'tax_amount',
-        :'checkout_expiration' => :'checkout_expiration'
+        :'checkout_expiration' => :'checkout_expiration',
+        :'order_amount' => :'order_amount'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'intent' => :'Object',
         :'reference_id' => :'Object',
         :'description' => :'Object',
         :'requires_shipping_info' => :'Object',
@@ -57,7 +64,8 @@ module SezzleClient
         :'metadata' => :'Object',
         :'shipping_amount' => :'Object',
         :'tax_amount' => :'Object',
-        :'checkout_expiration' => :'Object'
+        :'checkout_expiration' => :'Object',
+        :'order_amount' => :'Object'
       }
     end
 
@@ -81,6 +89,10 @@ module SezzleClient
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'intent')
+        self.intent = attributes[:'intent']
+      end
 
       if attributes.key?(:'reference_id')
         self.reference_id = attributes[:'reference_id']
@@ -123,6 +135,10 @@ module SezzleClient
       if attributes.key?(:'checkout_expiration')
         self.checkout_expiration = attributes[:'checkout_expiration']
       end
+
+      if attributes.key?(:'order_amount')
+        self.order_amount = attributes[:'order_amount']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -143,6 +159,7 @@ module SezzleClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          intent == o.intent &&
           reference_id == o.reference_id &&
           description == o.description &&
           requires_shipping_info == o.requires_shipping_info &&
@@ -151,7 +168,8 @@ module SezzleClient
           metadata == o.metadata &&
           shipping_amount == o.shipping_amount &&
           tax_amount == o.tax_amount &&
-          checkout_expiration == o.checkout_expiration
+          checkout_expiration == o.checkout_expiration &&
+          order_amount == o.order_amount
     end
 
     # @see the `==` method
@@ -163,7 +181,7 @@ module SezzleClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [reference_id, description, requires_shipping_info, items, discounts, metadata, shipping_amount, tax_amount, checkout_expiration].hash
+      [intent, reference_id, description, requires_shipping_info, items, discounts, metadata, shipping_amount, tax_amount, checkout_expiration, order_amount].hash
     end
 
     # Builds the object from hash
