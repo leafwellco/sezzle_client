@@ -27,6 +27,8 @@ module SezzleClient
 
     attr_accessor :order_amount
 
+    attr_accessor :items
+
     attr_accessor :customer
 
     attr_accessor :authorization
@@ -41,6 +43,7 @@ module SezzleClient
         :'description' => :'description',
         :'metadata' => :'metadata',
         :'order_amount' => :'order_amount',
+        :'items' => :'items',
         :'customer' => :'customer',
         :'authorization' => :'authorization'
       }
@@ -56,6 +59,7 @@ module SezzleClient
         :'description' => :'',
         :'metadata' => :'',
         :'order_amount' => :'',
+        :'items' => :'',
         :'customer' => :'',
         :'authorization' => :''
       }
@@ -115,6 +119,10 @@ module SezzleClient
 
       if attributes.key?(:'order_amount')
         self.order_amount = attributes[:'order_amount']
+      end
+
+      if attributes.key?(:'items')
+        self.items = attributes[:'items']
       end
 
       if attributes.key?(:'customer')
