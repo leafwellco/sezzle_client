@@ -29,6 +29,12 @@ module SezzleClient
 
     attr_accessor :items
 
+    attr_accessor :checkout_expiration
+
+    attr_accessor :checkout_status
+
+    attr_accessor :reauthorizations
+
     attr_accessor :customer
 
     attr_accessor :authorization
@@ -44,6 +50,9 @@ module SezzleClient
         :'metadata' => :'metadata',
         :'order_amount' => :'order_amount',
         :'items' => :'items',
+        :'checkout_expiration' => :'checkout_expiration',
+        :'checkout_status' => :'checkout_status',
+        :'reauthorizations' => :'reauthorizations',
         :'customer' => :'customer',
         :'authorization' => :'authorization'
       }
@@ -60,6 +69,9 @@ module SezzleClient
         :'metadata' => :'',
         :'order_amount' => :'',
         :'items' => :'',
+        :'checkout_expiration' => :'',
+        :'checkout_status' => :'',
+        :'reauthorizations' => :'',
         :'customer' => :'',
         :'authorization' => :''
       }
@@ -123,6 +135,18 @@ module SezzleClient
 
       if attributes.key?(:'items')
         self.items = attributes[:'items']
+      end
+
+      if attributes.key?(:'checkout_expiration')
+        self.checkout_expiration = attributes[:'checkout_expiration']
+      end
+
+      if attributes.key?(:'checkout_status')
+        self.checkout_status = attributes[:'checkout_status']
+      end
+
+      if attributes.key?(:'reauthorizations')
+        self.reauthorizations = attributes[:'reauthorizations']
       end
 
       if attributes.key?(:'customer')
